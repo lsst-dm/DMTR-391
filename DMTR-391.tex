@@ -53,7 +53,7 @@ All metrics reported here were calculated using the \href{https://github.com/lss
 
 The metric calculation pipelines from \texttt{faro} were run on the RC2 tracts to derive the photometric, astrometric, and shape metrics that are reported here. We exclude the two astrometry metrics (AM3 and AF3) that concern residuals on 200-arcminute scales, since the individual tracts of RC2 do not span large enough spatial scales to enable these measurements.
 
-For comparison, we provide the \SRD required ``design'' value of each metric as defined in the Science Requirements Document \citedsp{LPM-17}. For context, the \SRD does not place any constraints on \emph{y}-band for these Key Performance Metrics (KPMs).  For the photometric metrics, there are only specifications for \emph{g}, \emph{r}, and \emph{i}. In the case of the ellipticity correlation metrics, there are specs only for \emph{r} and \emph{i}. The \emph{y}-band measurements are of interest primarily for historical tracking.
+For comparison, we provide the \SRD required ``design'' value of each Key Performance Metrics (KPM) as defined in the Science Requirements Document \citedsp{LPM-17}. For the ellipticity correlation metrics, there are specifications only for \emph{r} and \emph{i} bands. The \emph{ugzy}-band measurements are of interest primarily for historical tracking.
 
 Some KPMs (e.g., PF1, AF1, AF2) involve thresholds that are different for ``design'', ``minimum'', and ``stretch'' specifications. Metrics in this report are all compared to the ``design'' thresholds. The assessment of these KPMs would be different if evaluated against different thresholds.
 
@@ -65,7 +65,7 @@ The major changes between versions 24 and 25 outlined in the previous section re
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.6\textwidth, trim=0.0in 0.0in 0.0in 0.0in, clip]{figures/photom_metrics_v24_with_thresholds.png}
-  \caption{Photometry metrics PA1 (photometric repeatability) and PF1 (percentage of measurements exceeding the outlier threshold) measured in the $r$-band. The figure shows the values of these metrics as measured in versions 19-24 of the LSST Science Pipelines. The measured values of both metrics have not changed significantly between the previous release (v23) and the current one (v24), as expected since no major changes were made to the photometric measurement algorithms between v23 and v24.}
+  \caption{Photometry metrics PA1 (photometric repeatability) and PF1 (percentage of measurements exceeding the outlier threshold) measured in the $r$-band. The figure shows the values of these metrics as measured in versions 22-24 of the LSST Science Pipelines. The measured values of both metrics have not changed significantly between the previous release (v23) and the current one (v24), as expected since no major changes were made to the photometric measurement algorithms between v23 and v24.}
   \label{fig:phot_metrics}
 \end{figure}
 
