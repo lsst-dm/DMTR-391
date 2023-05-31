@@ -57,17 +57,16 @@ For comparison, we provide the \SRD required ``design'' value of each Key Perfor
 
 Some KPMs (e.g., PF1, AF1, AF2) involve thresholds that are different for ``design'', ``minimum'', and ``stretch'' specifications. Metrics in this report are all compared to the ``design'' thresholds. The assessment of these KPMs would be different if evaluated against different thresholds.
 
-\section{Summary of performance metrics}
-
-The major changes between versions 23 and 24 outlined in the previous section include many updates that may affect photometric measurements. While minor, the improvements in both photometry metrics (Section~\ref{photometric-performance}) shown in Figure~\ref{fig:phot_metrics} are likely due to the newly-implemented selection of a repeatable set of PSF stars. The effect of changing the PSF modeling routine from PSFEx to Piff, as well as the improved modeling of amplifier offsets in ISR tasks, may also have contributed to the slight improvement in photometry metrics. The measured values of the astrometry metrics (Section~\ref{astrometric-performance}) are virtually unchanged over the past three major pipelines release versions. The ellipticity correlation metrics (Section~\ref{ellipticity-correlations}) continue a trend of improvement over the past three versions of the pipelines. This is likely due to improvements in photometric calibration, and perhaps upgrades to the deblending algorithm (Scarlet) and the PSF modeling tool (Piff).
-
-
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.6\textwidth, trim=0.0in 0.0in 0.0in 0.0in, clip]{figures/photom_metrics_v24_with_thresholds.png}
   \caption{Photometry metrics PA1 (photometric repeatability) and PF1 (percentage of measurements exceeding the outlier threshold) measured in the $r$-band. The figure shows the values of these metrics as measured in versions 22-24 of the LSST Science Pipelines. The measured values of both metrics have improved slightly between the previous release (v23) and the current one (v24), likely due to the implementation of consistent, repeatable selection of PSF stars in v24 (and perhaps due to the adoption of a new PSF fitting algorithm).}
   \label{fig:phot_metrics}
 \end{figure}
+
+\section{Summary of performance metrics}
+
+The major changes between versions 23 and 24 outlined in the previous section include many updates that may affect photometric measurements. While minor, the improvements in both photometry metrics (Section~\ref{photometric-performance}) shown in Figure~\ref{fig:phot_metrics} are likely due to the newly-implemented selection of a repeatable set of PSF stars. The effect of changing the PSF modeling routine from PSFEx to Piff, as well as the improved modeling of amplifier offsets in ISR tasks, may also have contributed to the slight improvement in photometry metrics. The measured values of the astrometry metrics (Section~\ref{astrometric-performance}) are virtually unchanged over the past three major pipelines release versions. The ellipticity correlation metrics (Section~\ref{ellipticity-correlations}) continue a trend of improvement over the past three versions of the pipelines. This is likely due to improvements in photometric calibration, and perhaps upgrades to the deblending algorithm (Scarlet) and the PSF modeling tool (Piff).
 
 \section{Photometric Performance}\label{photometric-performance}
 
@@ -846,8 +845,6 @@ mas\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
-
-%Almost all of the astrometric metrics are improved with RC2 relative to their values with validation\_data\_hsc. This behavior is expected, because validate\_drp does not include running jointcal, while the RC2 processing does include jointcal. This results in improved astrometry because (1) jointcal simultaneously fits positions of objects in all visits, and (2) RC2 contains more visits, which allows for improvement in the statistical noise of astrometry measurements.
 
 \section{Ellipticity Correlations}\label{ellipticity-correlations}
 
