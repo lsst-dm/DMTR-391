@@ -45,11 +45,11 @@ The report for the previous version can be found in \citedsp{DMTR-351}.
 
 \maketitle
 
-In this Report, we characterize the performance of the Rubin Observatory Science Pipelines Version 24.1.0. We illustrate the performance via metrics that are measured on the HSC-RC2 dataset. RC2 consists of 3 tracts of data taken from the HSC-SSP survey, and selected to provide a means of testing various ``pathological'' cases (e.g., difficult astrometric solutions, extremely good seeing that does not provide a well-sampled PSF, difficult fields for deblending, and large galaxies, among others). These three tracts each contain between 112--149 visits split between the HSC-G, HSC-R, HSC-I, HSC-Z, and HSC-Y (\emph{grizy}) filters.
+In this report, we characterize the performance of the Rubin Observatory Science Pipelines Version 24.1.0. We illustrate the performance via metrics that are measured on the HSC-RC2 dataset. RC2 consists of 3 tracts of data taken from the HSC-SSP survey, and selected to provide a means of testing various ``pathological'' cases (e.g., difficult astrometric solutions, extremely good seeing that does not provide a well-sampled PSF, difficult fields for deblending, and large galaxies, among others). These three tracts each contain between 112--149 visits split between the HSC-G, HSC-R, HSC-I, HSC-Z, and HSC-Y (\emph{grizy}) filters.
 
 Following the switch to Generation 3 (``Gen 3'') Middleware that took place in Version 23.0.0 of the Science Pipelines, Version 24.1.0 contains a number of updates to the Gen 3 Middleware. Other important changes in the v24 release include the adoption of the Scarlet Lite deblender for all measurements on coadds, changing the default PSF modeling algorithm to Piff, producing a repeatable selection of stars for PSF modeling, and matching the background levels of adjacent amplifiers during ISR tasks. For more details on the major new features, see the \href{https://pipelines.lsst.io/releases/v24_0_0.html#release-latest}{release notes for v24}.
 
-All metrics reported here were calculated using the \href{https://github.com/lsst/faro}{faro} metric calculation package, which is part of the standard pipeline builds. All of the underlying algorithms to calculate metrics within \texttt{faro} are the same as they were in v23.0.0 of the Science Pipelines, so any differences between metrics from the v23 and v24 releases are due to changes in the underlying pipelines.
+All metrics reported here were calculated using the \href{https://github.com/lsst/faro}{faro} (\citeds{DMTN-211}) metric calculation package, which is part of the standard pipeline builds. All of the underlying algorithms to calculate metrics within \texttt{faro} are the same as they were in v23.0.0 of the Science Pipelines, so any differences between metrics from the v23 and v24 releases are due to changes in the underlying pipelines.
 
 The metric calculation pipelines from \texttt{faro} were run on the RC2 tracts to derive the photometric, astrometric, and shape metrics that are reported here. We exclude the two astrometry metrics (AM3 and AF3) that concern residuals on 200-arcminute scales, since the individual tracts of RC2 do not span large enough spatial scales to enable these measurements.
 
@@ -60,7 +60,7 @@ Some KPMs (e.g., PF1, AF1, AF2) involve thresholds that are different for ``desi
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.6\textwidth, trim=0.0in 0.0in 0.0in 0.0in, clip]{figures/photom_metrics_v24_with_thresholds.png}
-  \caption{Photometry metrics PA1 (photometric repeatability) and PF1 (percentage of measurements exceeding the outlier threshold) measured in the $r$-band. The figure shows the values of these metrics as measured in versions 22-24 of the LSST Science Pipelines. The measured values of both metrics have improved slightly between the previous release (v23) and the current one (v24), likely due to the implementation of consistent, repeatable selection of PSF stars in v24 (and perhaps due to the adoption of a new PSF fitting algorithm).}
+  \caption{Photometry metrics PA1 (photometric repeatability) and PF1 (percentage of measurements exceeding the outlier threshold) measured in the $r$-band. The figure shows the values of these metrics as measured in versions 22-24 of the LSST Science Pipelines, compared against the SRD requirements (for both the ``design'' and ``minimum'' thresholds). The measured values of both metrics have improved slightly between the previous release (v23) and the current one (v24), likely due to the implementation of consistent, repeatable selection of PSF stars in v24 (and perhaps due to the adoption of a new PSF fitting algorithm).}
   \label{fig:phot_metrics}
 \end{figure}
 
@@ -271,7 +271,7 @@ PF1: \emph{y}\strut
   \centering
   \includegraphics[width=0.475\textwidth, trim=0.0in 0.0in 0.0in 0.0in, clip]{figures/astrom_metrics_v24_with_thresholds.png}
   \includegraphics[width=0.475\textwidth, trim=0.0in 0.0in 0.0in 0.0in, clip]{figures/astrom_outlier_metrics_v24_with_thresholds.png}
-  \caption{Astrometry metrics measured on $r$-band images compared over the past few major pipelines releases. \textit{Left: } Median astrometric measurement error on 5-arcminute scales (AM1) and 20-arcminute scales (AM2). \textit{Right: } Fraction of astrometric measurements exceeding the outlier threshold on 5-arcminute (AF1) and 20-arcminute (AF2) scales. The measured values of these metrics were virtually unchanged between pipelines version 23 and v24, as expected since no major changes have been made to astrometric measurement algorithms between v23 and v24. }
+  \caption{Astrometry metrics measured on $r$-band images compared over the past few major pipelines releases. \textit{Left: } Median astrometric measurement error on 5-arcminute scales (AM1) and 20-arcminute scales (AM2), compared against the SRD requirements (for the ``design'' thresholds; note that the thresholds for AM1 and AM2 are the same, and thus indistinguishable on the figure). \textit{Right: } Fraction of astrometric measurements exceeding the outlier threshold on 5-arcminute (AF1) and 20-arcminute (AF2) scales, compared against the SRD requirements (for the ``design'' thresholds; note that the thresholds for AF1 and AF2 are the same, and thus indistinguishable on the figure). The measured values of these metrics were virtually unchanged between pipelines version 23 and v24, as expected since no major changes have been made to astrometric measurement algorithms between v23 and v24. }
   \label{fig:astrom_metrics}
 \end{figure}
 
@@ -851,7 +851,7 @@ mas\strut
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.6\textwidth, trim=0.0in 0.0in 0.0in 0.0in, clip]{figures/ellip_metrics_v24_with_thresholds.png}
-  \caption{Median ellipticity residual correlations at 1-arcminute (TE1; normalized by a factor of $1\times10^{-5}$) and 5-arcminute (TE2; normalized by $1\times10^{-7}$) scales, as measured on $r$-band images, compared over the past few major pipelines releases. The measured values of these metrics show minor improvements between v23 and v24, likely due to improvements in photometric calibration (and thus weighting of images going into coadds), and perhaps due to the adoption of a new PSF modeling algorithm. }
+  \caption{Median ellipticity residual correlations at 1-arcminute (TE1; normalized by a factor of $1\times10^{-5}$) and 5-arcminute (TE2; normalized by $1\times10^{-7}$) scales, as measured on $r$-band images, compared over the past few major pipelines releases. Measurements are compared against the SRD requirements (for both the ``design'' and ``minimum'' thresholds; note that the normalized minimum thresholds for TE1 and TE2 are the same, and thus indistinguishable on the figure). The measured values of these metrics show minor improvements between v23 and v24, likely due to improvements in photometric calibration (and thus weighting of images going into coadds), and perhaps due to the adoption of a new PSF modeling algorithm. }
   \label{fig:ellip_metrics}
 \end{figure}
 
